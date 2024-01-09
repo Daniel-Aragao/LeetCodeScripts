@@ -1,5 +1,5 @@
 public class Solution {
-    public bool IsValid(string s) {
+    public static bool IsValid(string s) {
         var stack = new Stack<char>();
 
         var pairs = new List<(char, char)>() 
@@ -11,20 +11,25 @@ public class Solution {
 
         foreach(char charac in s)
         {
-            if(pairs.Where(p => p.Item1 == charac) != null) {
+            var isOpening = pairs.Where(p => p.Item1 == charac).FirstOrDefault() != default;
+
+            if(isOpening) {
                 stack.Push(charac);
             } else {
                 var tuple = pairs.Where(p => p.Item2 == charac).First();
+                var isClosed = stack.Count > 0 && tuple.Item1 == stack.Pop();
 
-                if(tuple.Item1 != stack.Peek())
+                if(!isClosed)
                 {
                     return false;
                 }
             }
         }
 
-        return true;
+        return stack.Count == 0;
     }
 }
 
-Console.WriteLine(IsValid("(])"));
+var result = Solution.IsValid("[()]");
+
+Console.WriteLine(result);
