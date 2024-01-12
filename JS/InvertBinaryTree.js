@@ -68,21 +68,24 @@ function TreeNode(val, left, right) {
 
         for(let i = 0; i < matrix.length; i++) {
             let line = matrix[i];
-            // let lineQuantity = Math.pow(2, i);
-            
-            let lineStr = "";
+            let lineQuantity = Math.pow(2, i);
+            let columns = [];
 
             line.forEach(column => {
-                lineStr += column.join(separator)
+                columns.push(column.join(separator));
             });
+
+            let lineStr = columns.join(separator)
 
             let missingSize = baseSize - lineStr.length;
 
-            lineStr = lineStr.padStart(missingSize / 2, separator);
+            lineStr = lineStr.padStart((missingSize / 2) + lineStr.length, separator);
             lineStr = lineStr.padEnd(baseSize, separator);
 
             console.log(lineStr);
         }
+
+        console.log("".padStart(baseSize, "_"))
     }
 }
 
@@ -142,6 +145,16 @@ let tree = FromArray([4,2,7,1,3,6,9,8,5,3,9,2,1,7,0]);
 let mat = tree.PrintableTree();
 // let tree = FromArray([4,2,7,1,3,6,9]);
 console.log(tree.toArray());
-console.log(tree.PrintTree());
+tree.PrintTree()
 // let inverted = invertTree([4,2,7,1,3,6,9]);
 // console.log(inverted);
+
+
+
+/*
+
+       4
+   2       7      
+ 1   3   6   9    
+8 5 3 9 2 1 7 0
+*/
