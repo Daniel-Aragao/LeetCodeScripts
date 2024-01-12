@@ -141,9 +141,12 @@ var invertTree = function(root) {
 // 4 => 31 = 2^5 - 1 | 5 => 16 = 2 ^ 4
 // 15 + 1 = 16
 
-let tree = FromArray([4,2,7,1,3,6,9,8,5,3,9,2,1,7,0]);
-let mat = tree.PrintableTree();
+// let tree = FromArray([4,2,7,1,3,6,9,8,5,3,9,2,1,7,0]);
 // let tree = FromArray([4,2,7,1,3,6,9]);
+// let tree = FromArray([4,2,7]);
+let tree = FromArray([4]);
+// let tree = FromArray([]);
+let mat = tree.PrintableTree();
 console.log(tree.toArray());
 tree.PrintTree()
 // let inverted = invertTree([4,2,7,1,3,6,9]);
@@ -153,7 +156,7 @@ tree.PrintTree()
 
 /*
 
-       4
+       4       
    2       7      
  1   3   6   9    
 8 5 3 9 2 1 7 0
